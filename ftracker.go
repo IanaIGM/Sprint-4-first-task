@@ -14,17 +14,6 @@ const (
 	cmInM     = 100   // количество сантиметров в метре.
 )
 
-func main() {
-
-	ShowTrainingInfo(4000, "Бег", 0.15, 85, 185, 50, 2)
-
-	ShowTrainingInfo(4000, "Ходьба", 1.0, 85, 185, 50, 2)
-
-	ShowTrainingInfo(1000, "Плавание", 0.25, 85, 185, 100, 4)
-
-	ShowTrainingInfo(1000, "Керлинг", 5, 85, 185, 50, 2)
-}
-
 // distance возвращает дистанцию(в километрах), которую преодолел пользователь за время тренировки.
 //
 // Параметры:
@@ -117,7 +106,7 @@ func WalkingSpentCalories(action int, duration, weight, height float64) float64 
 	// ваш код здесь
 	speedInMsec := meanSpeed(action, duration) * kmhInMsec                                                                                               // расчёт значение средней скорости движения в м/с
 	averageSpeedInMsec := math.Pow(speedInMsec, 2)                                                                                                       // возведение скорость движения в м/с в квадрат
-	heightInM := height / 100                                                                                                                            // рост в метрах
+	heightInM := height / 100                                                                                                                            // рост в метрахgo
 	caloriesCount := ((walkingCaloriesWeightMultiplier*weight + (averageSpeedInMsec/heightInM)*walkingSpeedHeightMultiplier*weight) * duration * minInH) // расчёт калорий
 	return caloriesCount
 }
@@ -155,4 +144,14 @@ func SwimmingSpentCalories(lengthPool, countPool int, duration, weight float64) 
 	swimmingSpeed := swimmingMeanSpeed(lengthPool, countPool, duration) + swimmingCaloriesMeanSpeedShift // расчёт средней скорости
 	caloriesCount := swimmingSpeed * swimmingCaloriesWeightMultiplier * weight * duration                // расчёт калорий
 	return caloriesCount
+}
+func main() {
+	// вызов функции с аргументами для каждого вида действий
+	fmt.Println(ShowTrainingInfo(4000, "Бег", 0.15, 85, 185, 50, 2))
+
+	fmt.Println(ShowTrainingInfo(4000, "Ходьба", 1.0, 85, 185, 50, 2))
+
+	fmt.Println(ShowTrainingInfo(1000, "Плавание", 0.25, 85, 185, 100, 4))
+
+	fmt.Println(ShowTrainingInfo(1000, "Керлинг", 5, 85, 185, 50, 2))
 }
