@@ -146,7 +146,7 @@ func SwimmingSpentCalories(lengthPool, countPool int, duration, weight float64) 
 	return caloriesCount
 }
 func main() {
-	// вызов функции с аргументами для каждого вида действий
+	// вызов функции с аргументами для каждого вида спорта
 	fmt.Println(ShowTrainingInfo(4000, "Бег", 0.15, 85, 185, 50, 2))
 
 	fmt.Println(ShowTrainingInfo(4000, "Ходьба", 1.0, 85, 185, 50, 2))
